@@ -17,7 +17,6 @@ class TicketsController < ApplicationController
 
   def create
     ticket = Ticket.new(ticket_params)
-    ticket.project = Project.first # TODO: make dynamic
 
     if ticket.save
       flash[:notice] = 'Ticket created'
@@ -49,6 +48,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:name, :body, :status)
+    params.require(:ticket).permit(:project_id, :name, :body, :status)
   end
 end

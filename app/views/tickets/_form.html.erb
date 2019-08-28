@@ -1,5 +1,14 @@
 <%= form_with model: @ticket do |form| %>
   <div class="field">
+    <%= form.label :project_id, class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= form.collection_select :project_id, Project.all, :id, :name %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="field">
     <%= form.label :name, class: 'label' %>
     <%= form.text_field :name, class: 'input' %>
   </div class="field">
