@@ -5,14 +5,24 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
+    @project = Project.new
   end
 
   def edit; end
 
   def create
+    @project = Project.create(project_params)
+
+    if @project.save
+      flash[:notice] = 'Project saved'
+      redirect_to projects_path
+    else
+      render 'new'
+    end
   end
 
   def update
