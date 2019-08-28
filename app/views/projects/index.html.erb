@@ -1,1 +1,24 @@
-<p>Hello from projects</p>
+<h1 class="title is-1">Projects</h1>
+
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <th>Name</th>
+    <th class="has-text-centered">Open Tickets</th>
+    <th class="has-text-centered">Total Tickets</th>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td>
+          <p class="has-text-weight-bold"><%= link_to project.name, project_path(project) %></p>
+          <p><%= project.description %></p>
+        </td>
+        <td class="has-text-centered"></td>
+        <td class="has-text-centered"></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
