@@ -1,0 +1,29 @@
+<%= render 'shared/title', title: 'Tickets' %>
+
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <th>Name</th>
+    <th>Assignee</th>
+    <th>Status</th>
+    <th>Tags</th>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td>
+          <p class="has-text-weight-bold">
+            <%= link_to ticket.name, ticket_path(ticket) %>
+          </p>
+        </td>
+
+        <td class="has-text-centered"></td>
+        <td class="has-text-centered"><%= ticket.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="buttons">
+  <%= link_to 'New Ticket', new_ticket_path, class: 'button is-primary is-outlined' %>
+</div>
