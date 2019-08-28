@@ -8,6 +8,13 @@ class TicketsController < ApplicationController
   def show
   end
 
+  def new
+    @ticket = Ticket.new
+  end
+
+  def edit
+  end
+
   def create
     ticket = Ticket.new(ticket_params)
     ticket.project = Project.first # TODO: make dynamic
@@ -20,8 +27,13 @@ class TicketsController < ApplicationController
     end
   end
 
-  def new
-    @ticket = Ticket.new
+  def update
+    if @ticket.update(ticket_params)
+      flash[:notice] = 'Ticket updated'
+      redirect_to ticket_path(@ticket)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
