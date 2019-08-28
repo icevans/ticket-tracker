@@ -1,6 +1,6 @@
 <section class="section">
 	<div class="container">
-    <h1 class="title is-1"><%= @project.name %></h1>
+    <%= render 'shared/title', title: @project.name %>
     <p><%= @project.description %></p>
 
     <div class="buttons">
