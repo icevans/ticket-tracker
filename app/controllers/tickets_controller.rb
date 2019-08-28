@@ -5,6 +5,9 @@ class TicketsController < ApplicationController
     @tickets = Ticket.all
   end
 
+  def show
+  end
+
   def create
     ticket = Ticket.new(ticket_params)
     ticket.project = Project.first # TODO: make dynamic

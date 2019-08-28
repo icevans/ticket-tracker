@@ -1,0 +1,23 @@
+<%= render 'shared/title', title: @ticket.name %>
+
+<p><%= @ticket.body %></p>
+
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <th>Status</th>
+    <th>Creator</th>
+    <th>Assignee</th>
+  </thead>
+
+  <div class="buttons">
+    <%= link_to 'Edit', edit_ticket_path(@ticket), class: 'button is-small is-outlined is-link' %>
+  </div>
+
+  <tbody>
+    <tr>
+      <td><%= @ticket.status %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
