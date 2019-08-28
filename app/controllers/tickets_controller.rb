@@ -21,6 +21,12 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
   end
 
+  def destroy
+    @ticket.destroy
+    flash[:notice] = 'Ticket deleted'
+    redirect_back fallback_location: tickets_path
+  end
+
   private
 
   def set_ticket
