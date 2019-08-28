@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  get '/hello' => 'application#hello_world'
+  root 'projects#index'
+  
+  resources :projects
 end
