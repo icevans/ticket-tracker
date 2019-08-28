@@ -1,29 +1,20 @@
-<section class="section">
-	<div class="container">
-    <%= render 'shared/title', title: @project.name %>
-    <p><%= @project.description %></p>
+<%= render 'shared/title', title: @project.name %>
+<p><%= @project.description %></p>
 
-    <div class="buttons">
-      <%= link_to 'Edit', edit_project_path(@project), class: 'button is-link is-outlined is-small' %>
-      <%= link_to 'Delete', '', class: 'button is-danger is-outlined is-small' %>
-    </div>
-  </div>
-</section>
+<div class="buttons">
+  <%= link_to 'Edit', edit_project_path(@project), class: 'button is-link is-outlined is-small' %>
+  <%= link_to 'Delete', '', class: 'button is-danger is-outlined is-small' %>
+</div>
 
+<h2 class="title is-2">Tickets</h2>
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <th>Name</th>
+    <th class="has-text-centered">Open Tickets</th>
+    <th class="has-text-centered">Total Tickets</th>
+  </thead>
 
-<section class="section">
-  <div class="container">
-    <h2 class="title is-2">Tickets</h2>
-    <table class="table is-fullwidth is-striped">
-      <thead>
-        <th>Name</th>
-        <th class="has-text-centered">Open Tickets</th>
-        <th class="has-text-centered">Total Tickets</th>
-      </thead>
-    
-      <tbody>
-    
-      </tbody>
-    </table>
-  </div>
-</section>
+  <tbody>
+
+  </tbody>
+</table>
