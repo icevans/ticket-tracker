@@ -10,11 +10,20 @@
 <table class="table is-fullwidth is-striped">
   <thead>
     <th>Name</th>
-    <th class="has-text-centered">Open Tickets</th>
-    <th class="has-text-centered">Total Tickets</th>
+    <th>Assignee</th>
+    <th>Status</th>
+    <th>Tags</th>
   </thead>
 
   <tbody>
-
+    <% @project.tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.name %></td>
+        <td></td>
+        <td><%= ticket.status %></td>
+        <td></td>
+        <td>Edit Delete</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
