@@ -6,6 +6,7 @@
     <th>Assignee</th>
     <th>Status</th>
     <th>Tags</th>
+    <th></th>
   </thead>
 
   <tbody>
@@ -17,8 +18,13 @@
           </p>
         </td>
 
-        <td class="has-text-centered"></td>
-        <td class="has-text-centered"><%= ticket.status %></td>
+        <td></td>
+        <td><%= ticket.status %></td>
+        <td></td>
+        <td>
+          <%= link_to 'Edit', edit_ticket_path(ticket), class: 'button is-small is-outlined is-link' %>
+          <%= link_to 'Delete', ticket_path(ticket), method: 'delete', class: 'button is-small is-outlined is-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
