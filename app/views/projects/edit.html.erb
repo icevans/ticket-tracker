@@ -1,12 +1,3 @@
-<%= form_with model: @project do |form| %>
-  <div class="field">
-    <%= form.label :name, class: 'label' %>
-    <%= form.text_field :name, class: 'input' %>
-  </div class="field">
-  <div class="field">
-    <%= form.label :description, class: 'label' %>
-    <%= form.text_area :description, class: 'textarea' %>
-  </div class="field">
+<%= render 'shared/title', title: 'Edit Project' %>
 
-  <%= form.submit class: 'button is-primary' %>
-<% end %>
+<%= render 'form' %>
