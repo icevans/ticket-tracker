@@ -1,6 +1,7 @@
 <%= render 'shared/title', title: @ticket.name %>
 
 <p><%= @ticket.body %></p>
+<p><strong>Tags</strong>: <%= tag_names(@ticket.tags) %></p>
 
 <table class="table is-fullwidth is-striped">
   <thead>
