@@ -1,0 +1,23 @@
+<%= render 'shared/title', title: 'Tags' %>
+
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <th>Name</th>
+    <th class="has-text-centered">Tickets</th>
+    <th></th>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td>tag.name</td>
+        <td class="has-text-centered"></td>
+        <td>Edit Delete</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="buttons">
+  <%= link_to 'New Tag', new_tag_path, class: 'button is-primary is-outlined' %>
+</div>
