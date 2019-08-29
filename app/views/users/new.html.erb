@@ -16,6 +16,11 @@
     <%= form.password_field :password, class: 'input' %>
   </div class="field">
 
+  <div class="field">
+    <%= form.label :password_confirmation, class: 'label' %>
+    <%= form.password_field :password_confirmation, class: 'input' %>
+  </div class="field">
+
   <%= form.submit class: 'button is-primary' %>
   <%= link_to 'Cancel', tags_path, class: 'button is-outlined' %>
 <% end %>
