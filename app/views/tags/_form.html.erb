@@ -1,0 +1,9 @@
+<%= form_with model: @tag do |form| %>
+  <div class="field">
+    <%= form.label :name, class: 'label' %>
+    <%= form.text_field :name, class: 'input' %>
+  </div class="field">
+
+  <%= form.submit class: 'button is-primary' %>
+  <%= link_to 'Cancel', tags_path, class: 'button is-outlined' %>
+<% end %>
