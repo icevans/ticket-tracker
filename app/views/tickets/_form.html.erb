@@ -19,6 +19,15 @@
   </div class="field">
 
   <div class="field">
+    <%= form.label :tags, class: 'label' %>
+    <div class="control">
+      <div class="select is-multiple" size=3>
+        <%= form.collection_select :tag_ids, Tag.all, :id, :name, {}, {multiple: true, size: 4} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
     <%= form.label :status, class: 'label' %>
     <div class="control">
       <div class="select">
