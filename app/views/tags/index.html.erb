@@ -12,7 +12,10 @@
       <tr>
         <td><%= tag.name %></td>
         <td class="has-text-centered"></td>
-        <td>Edit Delete</td>
+          <td>
+            <%= link_to 'Edit', edit_tag_path(tag), class: 'button is-small is-outlined is-link' %>
+            <%= link_to 'Delete', tag_path(tag), method: 'delete', class: 'button is-small is-outlined is-danger' %>
+          </td>
       </tr>
     <% end %>
   </tbody>
