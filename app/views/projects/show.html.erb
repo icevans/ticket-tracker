@@ -7,23 +7,4 @@
 </div>
 
 <h2 class="title is-2">Tickets</h2>
-<table class="table is-fullwidth is-striped">
-  <thead>
-    <th>Name</th>
-    <th>Assignee</th>
-    <th>Status</th>
-    <th>Tags</th>
-  </thead>
-
-  <tbody>
-    <% @project.tickets.each do |ticket| %>
-      <tr>
-        <td><%= ticket.name %></td>
-        <td></td>
-        <td><%= ticket.status %></td>
-        <td></td>
-        <td>Edit Delete</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'tickets/tickets_table', tickets: @project.tickets %>
