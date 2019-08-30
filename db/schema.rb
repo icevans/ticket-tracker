@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_205049) do
+ActiveRecord::Schema.define(version: 2019_08_30_143125) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_08_29_205049) do
     t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "creator_id"
+    t.index ["creator_id"], name: "index_tickets_on_creator_id"
     t.index ["project_id"], name: "index_tickets_on_project_id"
   end
 
@@ -55,4 +57,5 @@ ActiveRecord::Schema.define(version: 2019_08_29_205049) do
   add_foreign_key "taggings", "tags"
   add_foreign_key "taggings", "tickets"
   add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "users", column: "creator_id"
 end
