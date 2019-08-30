@@ -1,5 +1,43 @@
 <%= render 'shared/title', title: 'Tickets' %>
 
+<%= form_with(url: tickets_path, method: 'get') do |form| %>
+  Filter by: 
+  <div class="field has-addons">
+
+    <div class="control">
+      <div class="select">
+        <%= form.collection_select :project_id, Project.all, :id, :name, { prompt: '- Project -' } %>
+      </div>
+    </div>
+
+    <div class="control">
+      <div class="select">
+        <%= form.select(:status, [
+          ['New', 'new'],
+          ['Blocked', 'blocked'],
+          ['In Progress', 'in_progress'],
+          ['Fixed', 'fixed']
+        ], { prompt: '- Status -' }, {class: 'select'}) %>
+      </div>
+    </div>
+
+    <div class="control">
+      <div class="select">
+        <%= form.collection_select :tag_id, Tag.all, :id, :name, { prompt: '- Tags -' } %>
+      </div>
+    </div>
+
+    <div class="control">
+        <%= form.submit 'Filter', class: 'button is-primary' %>
+        <%= link_to 'Clear Filters', tickets_path, class: 'button is-text' %>
+    </div>
+
+    <div class="control">
+      
+    </div>
+  </div>
+<% end %>
+
 <%= render 'tickets_table', tickets: @tickets %>
 
 <% if logged_in? %>

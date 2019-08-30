@@ -3,10 +3,30 @@ class TicketsController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
   def index
-    @tickets = Ticket.all
+    filter = request.query_parameters.delete_if do |_, value|
+      ['', 'Filter'].include? value
+    end
+
+    if filter.has_key? :tag_id
+      filter[:tags] = { id: filter[:tag_id] }
+      filter.delete(:tag_id)
+    end
+
+    if filter.empty?
+      @tickets = Ticket.all
+    else
+      @tickets = Ticket.joins(:tags).where(filter)
+    end
+
+    respond_to do |format|
+      format.js { render 'tickets.js.erb' }
+      format.html { render }
+    end
   end
 
   def show
+    @comment = Comment.new
+    @comment.ticket = @ticket
   end
 
   def new
