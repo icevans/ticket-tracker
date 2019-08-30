@@ -28,6 +28,15 @@
   </div>
 
   <div class="field">
+    <%= form.label :assignee, class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= form.collection_select :assignee_id, User.all, :id, :name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
     <%= form.label :status, class: 'label' %>
     <div class="control">
       <div class="select">
