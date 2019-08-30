@@ -1,0 +1,17 @@
+<%= form_with do %>
+  <div class="field">
+    <%= label_tag(:email, "Email", class: "label") %>
+    <%= text_field_tag(:email, nil, class: "input") %>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:password, "Password", class: "label") %>
+    <%= password_field_tag(:password, nil, class: "input") %>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= submit_tag("Log In", class: "button is-primary") %>
+    </div>
+  </div>
+<% end %>

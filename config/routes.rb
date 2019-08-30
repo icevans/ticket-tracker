@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get 'register' => 'users#new'
 
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  post 'logout' => 'sessions#destroy'
+
   resources :projects
   resources :tickets
   resources :tags, except: :show
