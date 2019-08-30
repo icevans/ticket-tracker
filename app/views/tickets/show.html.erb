@@ -46,15 +46,4 @@
   </div>
 <% end %>
 
-<%= form_with scope: :comment, url: ticket_comments_path(@ticket) do |form| %>
-  <div class="field">
-    <%= form.label :body, class: 'label' %>
-    <%= form.text_area :body, class: 'textarea' %>
-  </div>
-
-  <div class="field">
-    <div class="control">
-      <%= form.submit class: 'button is-primary' %>
-    </div>
-  </div>
-<% end %>
+<%= render 'comments/form' %>

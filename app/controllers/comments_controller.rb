@@ -1,17 +1,16 @@
 class CommentsController < ApplicationController
   before_action :set_comment, except: :create
+  before_action :set_ticket
   before_action :require_login
-  before_action { require_owner(@comment) }
+  before_action(except: :create) { require_owner(@comment) }
 
   def create
-    ticket = Ticket.find(params[:ticket_id])
-    comment = Comment.new(ticket_params)
-    comment.ticket = ticket
-    comment.creator = current_user
+    @ticket.comments.build(comment_params.merge(user_id: current_user.id))
+    @ticket.status = new_status
 
-    if comment.save
+    if @ticket.save
       flash[:notice] = 'Comment created'
-      redirect_to ticket_path(ticket)
+      redirect_to ticket_path(@ticket)
     else
       render 'tickets/show'
     end
@@ -22,7 +21,10 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(ticket_params)
+    if @comment.update(comment_params)
+      ticket.status = new_status
+      ticket.save
+
       flash[:notice] = 'Comment updated'
       redirect_to ticket_path(params[:ticket_id])
     else
@@ -36,7 +38,15 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def ticket_params
-    params.require(:comment).permit(:body, ticket_attributes: %i[status id])
+  def set_ticket
+    @ticket = Ticket.find(params[:ticket_id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
+
+  def new_status
+    params[:comment][:ticket_attributes][:status]
   end
 end
