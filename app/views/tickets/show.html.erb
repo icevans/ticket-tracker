@@ -37,9 +37,12 @@
       &ndash; <%= comment.creator.name %>, 
       <%= time_ago_in_words(comment.created_at) %> ago
     </p>
-    <p>
-      <%= link_to 'Edit', edit_ticket_comment_path(@ticket, comment) %>
-    </p>
+
+    <% if logged_in? && current_user.id == comment.creator.id %>
+      <p>
+        <%= link_to 'Edit', edit_ticket_comment_path(@ticket, comment) %>
+      </p>
+    <% end %>
   </div>
 <% end %>
 

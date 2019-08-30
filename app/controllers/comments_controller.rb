@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, except: :create
+  before_action :require_login
+  before_action { require_owner(@comment) }
 
   def create
     ticket = Ticket.find(params[:ticket_id])
