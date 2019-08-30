@@ -1,7 +1,15 @@
 <%= render 'shared/title', title: @ticket.name %>
 
-<p><%= @ticket.body %></p>
-<p><strong>Tags</strong>: <%= tag_names(@ticket.tags) %></p>
+<div class="content">
+	<p><%= @ticket.body %></p>
+	<p><strong>Tags</strong>: <%= tag_names(@ticket.tags) %></p>
+
+  <% if logged_in? %>
+    <div class="buttons">
+      <%= link_to 'Edit', edit_ticket_path(@ticket), class: 'button is-small is-outlined is-link' %>
+    </div> 
+  <% end %>
+</div>
 
 <table class="table is-fullwidth is-striped">
   <thead>
@@ -9,10 +17,6 @@
     <th>Creator</th>
     <th>Assignee</th>
   </thead>
-
-  <div class="buttons">
-    <%= link_to 'Edit', edit_ticket_path(@ticket), class: 'button is-small is-outlined is-link' %>
-  </div>
 
   <tbody>
     <tr>

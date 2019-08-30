@@ -9,7 +9,9 @@
   <td><%= ticket.status %></td>
   <td><%= tag_names(ticket.tags) %></td>
   <td>
-    <%= link_to 'Edit', edit_ticket_path(ticket), class: 'button is-small is-outlined is-link' %>
-    <%= link_to 'Delete', ticket_path(ticket), method: 'delete', class: 'button is-small is-outlined is-danger' %>
+    <% if logged_in? %>
+      <%= link_to 'Edit', edit_ticket_path(ticket), class: 'button is-small is-outlined is-link' %>
+      <%= link_to 'Delete', ticket_path(ticket), method: 'delete', class: 'button is-small is-outlined is-danger' %>
+    <% end %>
   </td>
 </tr>

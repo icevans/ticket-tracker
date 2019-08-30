@@ -1,10 +1,16 @@
 <%= render 'shared/title', title: @project.name %>
-<p><%= @project.description %></p>
+<div class="content">
+  <p><%= @project.description %></p>
 
-<div class="buttons">
-  <%= link_to 'Edit', edit_project_path(@project), class: 'button is-link is-outlined is-small' %>
-  <%= link_to 'Delete', '', class: 'button is-danger is-outlined is-small' %>
+  <% if logged_in? %>
+    <div class="buttons">
+      <%= link_to 'Edit', edit_project_path(@project), class: 'button is-link is-outlined is-small' %>
+      <%= link_to 'Delete', '', class: 'button is-danger is-outlined is-small' %>
+    </div>
+  <% end %>
 </div>
+
+
 
 <h2 class="title is-2">Tickets</h2>
 <%= render 'tickets/tickets_table', tickets: @project.tickets %>

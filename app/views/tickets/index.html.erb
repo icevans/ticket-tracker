@@ -2,6 +2,8 @@
 
 <%= render 'tickets_table', tickets: @tickets %>
 
-<div class="buttons">
-  <%= link_to 'New Ticket', new_ticket_path, class: 'button is-primary is-outlined' %>
-</div>
+<% if logged_in? %>
+  <div class="buttons">
+    <%= link_to 'New Ticket', new_ticket_path, class: 'button is-primary is-outlined' %>
+  </div>
+<% end %>

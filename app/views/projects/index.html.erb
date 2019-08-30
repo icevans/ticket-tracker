@@ -21,6 +21,9 @@
   </tbody>
 </table>
 
-<div class="buttons">
+<% if logged_in? %>
+  <div class="buttons">
   <%= link_to 'New Project', new_project_path, class: 'button is-primary is-outlined' %>
 </div>
+<% end %>
+

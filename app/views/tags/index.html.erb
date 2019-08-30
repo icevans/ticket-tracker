@@ -13,14 +13,18 @@
         <td><%= tag.name %></td>
         <td class="has-text-centered"><%= tag.tickets.size %></td>
           <td>
-            <%= link_to 'Edit', edit_tag_path(tag), class: 'button is-small is-outlined is-link' %>
-            <%= link_to 'Delete', tag_path(tag), method: 'delete', class: 'button is-small is-outlined is-danger' %>
+            <% if logged_in? %>
+              <%= link_to 'Edit', edit_tag_path(tag), class: 'button is-small is-outlined is-link' %>
+              <%= link_to 'Delete', tag_path(tag), method: 'delete', class: 'button is-small is-outlined is-danger' %>
+            <% end %>
           </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<div class="buttons">
-  <%= link_to 'New Tag', new_tag_path, class: 'button is-primary is-outlined' %>
-</div>
+<% if logged_in? %>
+  <div class="buttons">
+    <%= link_to 'New Tag', new_tag_path, class: 'button is-primary is-outlined' %>
+  </div>
+<% end %>
