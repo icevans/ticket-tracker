@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post 'logout' => 'sessions#destroy'
 
   resources :projects
-  resources :tickets
+  resources :tickets do
+    resources :comments, only: %i[create edit update]
+  end
   resources :tags, except: :show
   resources :users, only: %i[create delete]
 end
