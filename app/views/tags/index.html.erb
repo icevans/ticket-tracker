@@ -11,7 +11,9 @@
     <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.name %></td>
-        <td class="has-text-centered"><%= tag.tickets.size %></td>
+        <td class="has-text-centered"><%= link_to tag.tickets.size, {
+          controller: 'tickets', action: 'index', tag_id: tag.id
+        } %></td>
           <td>
             <% if logged_in? %>
               <%= link_to 'Edit', edit_tag_path(tag), class: 'button is-small is-outlined is-link' %>
