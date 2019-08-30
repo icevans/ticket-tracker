@@ -21,8 +21,8 @@
   <tbody>
     <tr>
       <td><%= @ticket.status %></td>
-      <td><%= @ticket.creator.name %></td>
-      <td></td>
+      <td><%= @ticket.creator&.name %></td>
+      <td><%= @ticket.assignee&.name %></td>
     </tr>
   </tbody>
 </table>
