@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     ticket = Ticket.find(params[:ticket_id])
-    comment = Comment.new(params.require(:comment).permit(:body))
+    comment = Comment.new(ticket_params)
     comment.ticket = ticket
     comment.creator = current_user
 
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(params.require(:comment).permit(:body))
+    if @comment.update(ticket_params)
       flash[:notice] = 'Comment updated'
       redirect_to ticket_path(params[:ticket_id])
     else
@@ -32,5 +32,9 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def ticket_params
+    params.require(:comment).permit(:body, ticket_attributes: %i[status id])
   end
 end
