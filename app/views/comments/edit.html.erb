@@ -1,0 +1,12 @@
+<%= form_with model: @comment, url: ticket_comment_path(@ticket, @comment) do |form| %>
+  <div class="field">
+    <%= form.label :body, class: 'label' %>
+    <%= form.text_area :body, class: 'textarea' %>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= form.submit class: 'button is-primary' %>
+    </div>
+  </div>
+<% end %>
