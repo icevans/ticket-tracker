@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_action :require_login, except: %i[index]
 
   def index
-    @tags = Tag.all
+    @tag_counts = Tag.all.left_outer_joins(:tickets).group(:id, :name).count
   end
 
   def new

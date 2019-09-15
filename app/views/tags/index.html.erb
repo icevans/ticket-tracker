@@ -8,16 +8,18 @@
   </thead>
 
   <tbody>
-    <% @tags.each do |tag| %>
+    <% @tag_counts.each do |tag, count| %>
+      <% id, name = tag %>
+
       <tr>
-        <td><%= tag.name %></td>
-        <td class="has-text-centered"><%= link_to tag.tickets.size, {
-          controller: 'tickets', action: 'index', tag_id: tag.id
+        <td><%= name %></td>
+        <td class="has-text-centered"><%= link_to count, {
+          controller: 'tickets', action: 'index', tag_id: id
         } %></td>
           <td>
             <% if logged_in? %>
-              <%= link_to 'Edit', edit_tag_path(tag), class: 'button is-small is-outlined is-link' %>
-              <%= link_to 'Delete', tag_path(tag), method: 'delete', class: 'button is-small is-outlined is-danger' %>
+              <%= link_to 'Edit', edit_tag_path(id), class: 'button is-small is-outlined is-link' %>
+              <%= link_to 'Delete', tag_path(id), method: 'delete', class: 'button is-small is-outlined is-danger' %>
             <% end %>
           </td>
       </tr>
