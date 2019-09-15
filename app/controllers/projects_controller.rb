@@ -3,10 +3,11 @@ class ProjectsController < ApplicationController
   before_action :require_login, except: %i[index show]
 
   def index
-    @projects = Project.all
+    @projects = Project.includes(tickets: [:creator, :assignee, :tags])
   end
 
   def show
+    @project = Project.includes(tickets: [:creator, :assignee, :tags]).find(params[:id])
   end
 
   def new
