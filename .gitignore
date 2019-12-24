@@ -16,7 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-!/tmp/pids/.gitkeep
+!/tmp/pids/*
 
 # Ignore uploaded files in development.
 /storage/*
