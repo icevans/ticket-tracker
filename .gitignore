@@ -13,10 +13,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
-!/tmp/.keep
-!/tmp/pids/*
 
 # Ignore uploaded files in development.
 /storage/*
@@ -26,7 +23,7 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-# /config/master.key
+/config/master.key
 
 /public/packs
 /public/packs-test
